@@ -1,0 +1,20 @@
+@use "@angular/material" as mat;
+@use "variables" as vars;
+
+@include mat.core();
+
+$demo-app-theme: mat.define-theme((
+  color: (
+    primary: mat.$indigo-palette,
+    tertiary: mat.$orange-palette,
+  ),
+));
+
+html {
+  @include mat.all-component-themes($demo-app-theme);
+}
+
+body {
+  margin: 0;
+  font-family: vars.$font-family;
+}

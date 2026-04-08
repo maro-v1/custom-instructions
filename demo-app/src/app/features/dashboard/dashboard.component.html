@@ -1,0 +1,26 @@
+<h1>Case Dashboard</h1>
+
+<table mat-table [dataSource]="(cases$ | async) ?? []">
+  <ng-container matColumnDef="referenceNumber">
+    <th mat-header-cell *matHeaderCellDef>Reference</th>
+    <td mat-cell *matCellDef="let row">{{ row.referenceNumber }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>Title</th>
+    <td mat-cell *matCellDef="let row">{{ row.title }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef>Status</th>
+    <td mat-cell *matCellDef="let row">{{ row.status.description }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="assignedTo">
+    <th mat-header-cell *matHeaderCellDef>Assigned To</th>
+    <td mat-cell *matCellDef="let row">{{ row.assignedTo ?? 'Unassigned' }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
